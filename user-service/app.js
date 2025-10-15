@@ -1,12 +1,14 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import Router from './routes/userSignup.js';
+import { logRequestResponse } from './middleware/loggerMiddleware.js';
 
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.use(logRequestResponse)
 
 app.get('/',(req,res)=>{
     res.send("user servive is running");

@@ -1,3 +1,5 @@
 node_module/
 .env
 *.log
+logs/
+logging-service

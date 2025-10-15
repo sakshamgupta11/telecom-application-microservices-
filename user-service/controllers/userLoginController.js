@@ -5,14 +5,14 @@ import bcrypt from "bcrypt"
 
 export async function userLogin(req, res) {
     try {
-        const { email, password, password_confirmation } = req.body;
-        if (!email || !password || !password_confirmation) {
+        const { email, password } = req.body;
+        if (!email || !password) {
             return res.status(400).json({ status: "failed", msg: "all filed are required" })
         }
 
-        if (password !== password_confirmation) {
-            return res.status(400).json({ status: "failed", msg: "password and confirmation password is not match please recheck" })
-        }
+        // if (password !== password_confirmation) {
+        //     return res.status(400).json({ status: "failed", msg: "password and confirmation password is not match please recheck" })
+        // }
         const checkExistUser = await userLoginCheck(email);
         if (!checkExistUser) {
             return res.status(400).json({ status: "failed", msg: "user does not exist please sign up" })
